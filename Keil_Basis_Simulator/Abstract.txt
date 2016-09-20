@@ -1,0 +1,11 @@
+The Project is a simple project for simulation.
+The Project simulates a STM32F1xx controller.
+
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS V2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    =            8.00 MHz
+   - SYSCLK  =           72.00 MHz
+
+

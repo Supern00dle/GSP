@@ -1,0 +1,49 @@
+;******************** (C) COPYRIGHT HAW-Hamburg ********************************
+;* File Name          : main.s
+;* Author             : Alfred Lohmann
+;* Version            : V1.0
+;* Date               : 15.07.2012
+;* Description        : This is a simple main.
+;					  : The output is send to UART 1. Open Serial Window when 
+;					  : when debugging. Select UART #1 in Serial Window selection.
+;					  :
+;					  : Replace this main with yours.
+;
+;*******************************************************************************
+
+	IMPORT 	Init_TI_Board	; Initialize the serial line
+	IMPORT	puts			; C output function
+;********************************************
+; Data section, aligned on 4-byte boundery
+;********************************************
+	
+	AREA MyData, DATA, align = 2
+	EXPORT text
+text	DCB	"Hallo Welt",0
+
+;********************************************
+; Code section, aligned on 8-byte boundery
+;********************************************
+
+	AREA MyCode, CODE, readonly, align = 2
+
+;--------------------------------------------
+; main subroutine
+;--------------------------------------------
+	GLOBAL main
+	
+main	PROC
+
+		BL	Init_TI_Board	; Initialize the serial line to TTY
+		
+		LDR	r0,=text
+		BL	puts		; call C output method
+		
+		
+forever	b	forever		; nowhere to retun if main ends		
+		ENDP
+	
+		ALIGN
+       
+		END
+		
